@@ -1,4 +1,4 @@
-package com.toopinxitai.productservice.dto;
+package com.online.shop.productservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

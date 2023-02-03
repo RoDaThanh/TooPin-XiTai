@@ -1,11 +1,9 @@
-package com.toopinxitai.productservice;
+package com.online.shop.productservice;
 
+import com.online.shop.productservice.dto.ProductRequest;
+import com.online.shop.productservice.model.Product;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.toopinxitai.productservice.dto.ProductRequest;
-import com.toopinxitai.productservice.dto.ProductRespone;
-import com.toopinxitai.productservice.model.Product;
-import com.toopinxitai.productservice.repository.ProductRepository;
-import org.junit.jupiter.api.Assertions;
+import com.online.shop.productservice.repository.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -13,14 +11,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 

@@ -1,9 +1,8 @@
-package com.toopinxitai.productservice.controller;
+package com.online.shop.productservice.controller;
 
-import com.toopinxitai.productservice.dto.ProductRequest;
-import com.toopinxitai.productservice.dto.ProductRespone;
-import com.toopinxitai.productservice.service.ProductService;
-import lombok.RequiredArgsConstructor;
+import com.online.shop.productservice.dto.ProductRequest;
+import com.online.shop.productservice.dto.ProductRespone;
+import com.online.shop.productservice.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

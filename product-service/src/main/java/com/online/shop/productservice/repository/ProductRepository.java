@@ -1,6 +1,6 @@
-package com.toopinxitai.productservice.repository;
+package com.online.shop.productservice.repository;
 
-import com.toopinxitai.productservice.model.Product;
+import com.online.shop.productservice.model.Product;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

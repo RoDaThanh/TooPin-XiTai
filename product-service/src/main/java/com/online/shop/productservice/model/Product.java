@@ -1,4 +1,4 @@
-package com.toopinxitai.productservice.model;
+package com.online.shop.productservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

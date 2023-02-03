@@ -1,11 +1,9 @@
-package com.toopinxitai.productservice.service;
+package com.online.shop.productservice.service;
 
-import com.toopinxitai.productservice.dto.ProductRequest;
-import com.toopinxitai.productservice.dto.ProductRespone;
-import com.toopinxitai.productservice.model.Product;
-import com.toopinxitai.productservice.repository.ProductRepository;
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import com.online.shop.productservice.dto.ProductRequest;
+import com.online.shop.productservice.dto.ProductRespone;
+import com.online.shop.productservice.model.Product;
+import com.online.shop.productservice.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
