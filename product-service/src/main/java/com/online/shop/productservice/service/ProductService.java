@@ -22,6 +22,7 @@ public class ProductService {
                 .name(productRequest.getName())
                 .description(productRequest.getDescription())
                 .price(productRequest.getPrice())
+                .img(productRequest.getImg())
                 .build();
         productRepository.save(product);
         log.info("Product {} was created!", product.getId());
@@ -36,6 +37,7 @@ public class ProductService {
         return ProductRespone.builder().id(product.getId())
                 .name(product.getName())
                 .price(product.getPrice())
+                .img(product.getImg())
                 .description(product.getDescription()).build();
     }
 

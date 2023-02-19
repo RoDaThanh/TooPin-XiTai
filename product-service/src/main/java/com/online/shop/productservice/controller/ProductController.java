@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/product")
-
 public class ProductController {
 
     @Autowired
@@ -22,6 +21,7 @@ public class ProductController {
     public void createProduct(@RequestBody ProductRequest productRequest){
         productService.createProduct(productRequest);
     }
+
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)

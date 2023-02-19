@@ -15,5 +15,6 @@ public class ProductRespone {
     private String id;
     private String name;
     private String description;
+    private String img;
     private BigDecimal price;
 }
