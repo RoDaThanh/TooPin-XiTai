@@ -4,17 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductRequest {
+@Builder
+public class ProductTypeRequest {
+    @Indexed(unique = true)
     private String name;
+
     private String description;
-    private BigDecimal price;
+
     private String img;
-    private String productTypeId;
+
+
 }
