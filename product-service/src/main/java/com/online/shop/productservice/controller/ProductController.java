@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/product")
+@RequestMapping(value = "product-service/api/products")
 public class ProductController {
 
     @Autowired
@@ -18,8 +18,8 @@ public class ProductController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createProduct(@RequestBody ProductRequest productRequest){
-        productService.createProduct(productRequest);
+    public ProductRespone createProduct(@RequestBody ProductRequest productRequest){
+        return productService.createProduct(productRequest);
     }
 
 
@@ -28,4 +28,11 @@ public class ProductController {
     public List<ProductRespone> getAllProducts(){
         return productService.getAllProducts();
     }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ProductRespone getProduct(@PathVariable("id") String productId){
+        return productService.getProductById(productId);
+    }
+
 }
