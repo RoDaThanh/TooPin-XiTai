@@ -25,8 +25,8 @@ public class ProductController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<ProductRespone> getAllProducts(){
-        return productService.getAllProducts();
+    public List<ProductRespone> getAllProducts(@RequestParam(value = "categoryId", required = false) String categoryId){
+        return productService.getProducts(categoryId);
     }
 
     @GetMapping("/{id}")

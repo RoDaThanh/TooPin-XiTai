@@ -3,12 +3,11 @@ package com.online.shop.productservice.service;
 import com.online.shop.productservice.dto.ProductRequest;
 import com.online.shop.productservice.dto.ProductRespone;
 import com.online.shop.productservice.model.Product;
-import com.online.shop.productservice.model.ProductType;
 import com.online.shop.productservice.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +32,18 @@ public class ProductService {
         return mapToProductRespone(product);
     }
 
-    public List<ProductRespone> getAllProducts(){
+    public List<ProductRespone> getProducts(String categoryId){
+        if(StringUtils.isBlank(categoryId))
+            return getAllProducts();
+        return getProductsByCategoryId(categoryId);
+    }
+
+    private List<ProductRespone> getProductsByCategoryId(String categoryId) {
+        List<Product> products = productRepository.findByProductTypeId(categoryId);
+        return products.stream().map(this::mapToProductRespone).collect(Collectors.toList());
+    }
+
+    private List<ProductRespone> getAllProducts() {
         List<Product> products = productRepository.findAll();
         return products.stream().map(this::mapToProductRespone).collect(Collectors.toList());
     }
