@@ -8,7 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.zalando.problem.Problem;
+import org.zalando.problem.Status;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -17,7 +20,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class ProductService {
     @Autowired
-    private ProductRepository productRepository;
+    private ProductRepository productRepository ;
 
     public ProductRespone createProduct(ProductRequest productRequest) {
         Product product = Product.builder()
@@ -40,11 +43,17 @@ public class ProductService {
 
     private List<ProductRespone> getProductsByCategoryId(String categoryId) {
         List<Product> products = productRepository.findByProductTypeId(categoryId);
+        if (products == null) {
+            throw Problem.valueOf(Status.BAD_REQUEST, "Cannot find any product with categoryId: "+ categoryId);
+        }
         return products.stream().map(this::mapToProductRespone).collect(Collectors.toList());
     }
 
     private List<ProductRespone> getAllProducts() {
         List<Product> products = productRepository.findAll();
+        if (products == null) {
+            return new ArrayList<>();
+        }
         return products.stream().map(this::mapToProductRespone).collect(Collectors.toList());
     }
 
@@ -64,6 +73,6 @@ public class ProductService {
         if(product.isPresent())
             return mapToProductRespone(product.get());
 
-        throw new IllegalArgumentException("No product is found with product id: "+ productId );
+        throw  Problem.valueOf(Status.NOT_FOUND,"No product is found with product id: "+ productId );
     }
 }

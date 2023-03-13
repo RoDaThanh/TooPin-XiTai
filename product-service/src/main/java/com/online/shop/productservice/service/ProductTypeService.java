@@ -7,7 +7,10 @@ import com.online.shop.productservice.repository.ProductTypeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.zalando.problem.Problem;
+import org.zalando.problem.Status;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -30,6 +33,9 @@ public class ProductTypeService {
 
     public List<ProductTypeResponse> getAllProductTypes(){
         List<ProductType> productTypes = productTypeRepository.findAll();
+        if (productTypes == null) {
+            return new ArrayList<>();
+        }
         return productTypes.stream().map(this::mapToProductTypeRespone).collect(Collectors.toList());
     }
 
@@ -39,7 +45,7 @@ public class ProductTypeService {
         if(productType.isPresent())
             return mapToProductTypeRespone(productType.get());
 
-        throw new IllegalArgumentException("No product type is found with product type id: "+ productTypeId );
+        throw  Problem.valueOf(Status.NOT_FOUND, "No product type is found with product type id: "+ productTypeId );
     }
 
     private ProductTypeResponse mapToProductTypeRespone(ProductType productType) {
