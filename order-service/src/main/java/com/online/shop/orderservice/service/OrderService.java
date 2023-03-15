@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.zalando.problem.Problem;
+import org.zalando.problem.Status;
 
 import java.util.Arrays;
 import java.util.List;
@@ -45,7 +47,7 @@ public class OrderService {
         if (isAllInStock)
             orderRepository.save(order);
         else
-            throw new IllegalArgumentException("Is not in Stock");
+             Problem.valueOf(Status.BAD_REQUEST, "Is not in Stock");
     }
 
     private OrderItem mapToOrderItem(OrderItemRequest itemRequest) {
