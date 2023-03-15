@@ -13,16 +13,19 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "t_order")
-public class Order {
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String orderNumber;
+    private String username;
+    private String password;
+    private String address;
+    private String phoneNumber;
+    private String firstName;
+    private String lastName;
+    private String emailAddress;
 
-    @ManyToOne()
-    private Customer customer;
+    @OneToMany(mappedBy = "customer")
+    private List<Order> orderList;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<OrderItem> orderItems;
 }
